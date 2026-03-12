@@ -1,29 +1,26 @@
-import java.util.LinkedList;
-
 public class PalindromeChecker {
+
+    public static boolean isPalindrome(String str, int start, int end) {
+
+        // base condition
+        if (start >= end) {
+            return true;
+        }
+
+        // check characters
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
+
+        // recursive call
+        return isPalindrome(str, start + 1, end - 1);
+    }
+
     public static void main(String[] args) {
 
         String str = "madam";
 
-        LinkedList<Character> list = new LinkedList<>();
-
-        // add characters to linked list
-        for (char c : str.toCharArray()) {
-            list.add(c);
-        }
-
-        boolean isPalindrome = true;
-
-        // compare start and end
-        while (list.size() > 1) {
-            if (list.removeFirst() != list.removeLast()) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        // print result
-        if (isPalindrome) {
+        if (isPalindrome(str, 0, str.length() - 1)) {
             System.out.println("Palindrome");
         } else {
             System.out.println("Not Palindrome");
