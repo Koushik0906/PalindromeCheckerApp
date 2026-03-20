@@ -1,29 +1,21 @@
 public class PalindromeChecker {
 
-    public static boolean isPalindrome(String str, int start, int end) {
+    // method to check palindrome
+    public boolean checkPalindrome(String str) {
 
-        // base condition
-        if (start >= end) {
-            return true;
+        String processed = str.replaceAll("\\s+", "").toLowerCase();
+
+        int start = 0;
+        int end = processed.length() - 1;
+
+        while (start < end) {
+            if (processed.charAt(start) != processed.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
         }
 
-        // check characters
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
-
-        // recursive call
-        return isPalindrome(str, start + 1, end - 1);
-    }
-
-    public static void main(String[] args) {
-
-        String str = "madam";
-
-        if (isPalindrome(str, 0, str.length() - 1)) {
-            System.out.println("Palindrome");
-        } else {
-            System.out.println("Not Palindrome");
-        }
+        return true;
     }
 }
